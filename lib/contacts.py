@@ -53,16 +53,14 @@ harry.save()
 
 
 def book():
-    print(' 1: Contacts \n 2: Make Contact \n 3: Update Contact \n 4: Delete Contact \n 5: Exit')
+    print(' 1: Contacts \n 2: Make Contact \n 3: Find Contact \n 4: Delete Contact \n 5: Exit')
     selection = int(input('Enter Category: '))
     if selection == 1:
         showContacts()
     elif selection == 2:
         createContact()
     elif selection == 3:
-        updateContact()
-    elif selection == 4:
-        deleteContact()
+        findContact()
     else:
         exit()
 
@@ -94,6 +92,13 @@ def createContact():
     add_contact.save()
     book()
 
+## find a contact by their first name
+def findContact():
+    search = input("Type first name here: ")
+    find_contact = Person.select().where(Person.first_name == search)
+    for contact in find_contact:
+     print(
+            f'Full Name: {contact.first_name} {contact.last_name} \n Birthday: {contact.birthday} \n Phone Number: {contact.number}')
 
 
 book()
