@@ -54,7 +54,7 @@ harry.save()
 
 def book():
     print(' 1: Contacts \n 2: Make Contact \n 3: Update Contact \n 4: Delete Contact \n 5: Exit')
-    selection = int(input('enter category: '))
+    selection = int(input('Enter Category: '))
     if selection == 1:
         showContacts()
     elif selection == 2:
@@ -72,6 +72,28 @@ def showContacts():
     for contact in contacts:
         print(
             f'Full Name: {contact.first_name} {contact.last_name} \n Birthday: {contact.birthday} \n Phone Number: {contact.number}')
+    quit = input("To go back to Main Menu, press 'q': ")
+    if quit == 'q':
+        book()
+
+
+## create a new contact
+def createContact():
+    new_first_name = input('Enter first name: ')
+    new_last_name = input('Enter last name: ')
+    new_birthday = input('Enter birthday: ')
+    new_number = input('Enter phone number: ')
+
+    add_contact = Person( 
+        first_name = new_first_name,
+        last_name = new_last_name,
+        birthday = new_birthday,
+        number = new_number
+    )
+
+    add_contact.save()
+    book()
+
 
 
 book()
