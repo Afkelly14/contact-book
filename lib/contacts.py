@@ -65,6 +65,8 @@ def book():
         exit()
 
 # show all the contacts
+
+
 def showContacts():
     contacts = Person.select()
     for contact in contacts:
@@ -75,29 +77,31 @@ def showContacts():
         book()
 
 
-## create a new contact
+# create a new contact
 def createContact():
     new_first_name = input('Enter first name: ')
     new_last_name = input('Enter last name: ')
     new_birthday = input('Enter birthday: ')
     new_number = input('Enter phone number: ')
 
-    add_contact = Person( 
-        first_name = new_first_name,
-        last_name = new_last_name,
-        birthday = new_birthday,
-        number = new_number
+    add_contact = Person(
+        first_name=new_first_name,
+        last_name=new_last_name,
+        birthday=new_birthday,
+        number=new_number
     )
 
     add_contact.save()
     book()
 
-## find a contact by their first name
+# find a contact by their first name
+
+
 def findContact():
     search = input("Type first name here: ")
     find_contact = Person.select().where(Person.first_name == search)
     for contact in find_contact:
-     print(
+        print(
             f'Full Name: {contact.first_name} {contact.last_name} \n Birthday: {contact.birthday} \n Phone Number: {contact.number}')
 
 
